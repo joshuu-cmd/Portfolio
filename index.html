@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0f8b52;
+            --primary-dark: #0b6f40;
+            --text: #1f2d2b;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(180deg, #f5faf6 0%, #eff4f1 100%);
+            color: var(--text);
+        }
+
+        .topnav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+            min-height: 66px;
+            box-shadow: 0 4px 14px rgba(11, 111, 64, 0.18);
+            position: sticky;
+            top: 0;
+            z-index: 20;
+        }
+
+        .topnav button {
+            border: none;
+            background: transparent;
+            color: #fff;
+            padding: 20px 18px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s ease;
+            letter-spacing: 0.02em;
+        }
+
+        .topnav button:hover,
+        .topnav button.active {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+
+        .content {
+            display: none;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 38px 20px 52px;
+        }
+
+        .content.active {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+        }
+
+        #home h1 {
+            margin: 18px 0 8px;
+            font-size: clamp(2rem, 6vw, 3.25rem);
+        }
+
+        .home-role {
+            margin: 0 0 10px;
+            color: var(--primary-dark);
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            font-weight: 700;
+        }
+
+        #home > p {
+            max-width: 620px;
+            line-height: 1.7;
+        }
+
+        .home-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .home-cta {
+            padding: 12px 20px;
+            border: 2px solid var(--primary);
+            border-radius: 10px;
+            background: var(--primary);
+            color: #fff;
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+        }
+
+        .home-cta:hover {
+            transform: translateY(-2px);
+            background: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+
+        .home-cta.secondary {
+            background: transparent;
+            color: var(--primary-dark);
+        }
+
+        .home-cta.secondary:hover {
+            background: #e7f4eb;
+        }
+
+        .home-cta:focus-visible {
+            outline: 3px solid var(--primary-dark);
+            outline-offset: 3px;
+        }
+
+        #projects.content.active {
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: stretch;
+            justify-content: center;
+            gap: 24px;
+        }
+
+        @media (max-width: 600px) {
+            .topnav {
+                flex-wrap: wrap;
+                padding: 6px 0;
+            }
+        }
+        .project-card {
+            width: min(100%, 340px);
+            overflow: hidden;
+            background: #fff;
+            border: 1px solid rgba(15, 139, 82, 0.14);
+            border-radius: 18px;
+            box-shadow: 0 12px 30px rgba(16, 47, 33, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 18px 38px rgba(16, 47, 33, 0.16);
+        }
+
+        .project-card a {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding-bottom: 20px;
+            color: var(--primary-dark);
+            font-size: 1.1rem;
+            font-weight: 700;
+            line-height: 1.5;
+            text-decoration: none;
+        }
+
+        .project-card a:focus-visible {
+            outline: 3px solid var(--primary);
+            outline-offset: 4px;
+        }
+
+        .project-card img {
+            display: block;
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+        }
+
+        .project-card a span {
+            padding: 0 20px;
+        }
+
+        #contacts {
+            width: min(100% - 40px, 720px);
+            margin: 38px auto 52px;
+            padding: 36px 28px;
+            background: #fff;
+            border: 1px solid rgba(15, 139, 82, 0.14);
+            border-radius: 22px;
+            box-shadow: 0 12px 30px rgba(16, 47, 33, 0.1);
+        }
+
+        #contacts h2 {
+            margin: 0;
+            color: var(--primary-dark);
+            font-size: clamp(1.6rem, 4vw, 2.1rem);
+        }
+
+        #contacts p {
+            margin: 12px 0 24px;
+            color: #5d6d68;
+            line-height: 1.6;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 14px;
+        }
+
+        .contact-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 58px;
+            height: 58px;
+            background: #f2f8f4;
+            border: 1px solid rgba(15, 139, 82, 0.14);
+            border-radius: 16px;
+            transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .contact-links a:hover {
+            transform: translateY(-3px);
+            background: #e7f4eb;
+            box-shadow: 0 8px 18px rgba(16, 47, 33, 0.12);
+        }
+
+        .contact-links a:focus-visible {
+            outline: 3px solid var(--primary);
+            outline-offset: 3px;
+        }
+
+        .contact-links img {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 600px) {
+            #contacts {
+                padding: 28px 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="topnav">
+        <button class="tab-btn active" data-tab="home">Home</button>
+        <button class="tab-btn" data-tab="projects">Projects</button>
+        <button class="tab-btn" data-tab="contacts">Contacts</button>
+    </div>
+
+    <div id="home" class="content active">
+        <div class="profile"><img src="home.jpg" alt="profile"></div>
+        <h1>Hi, I'm Joshua Malombe</h1>
+        <p class="home-role">Frontend Developer &amp; Cybersecurity Specialist</p>
+        <p>I'm a passionate developer with experience in creating engaging web applications and a cybersecurity specialist.</p>
+        <div class="home-actions">
+            <button class="home-cta" type="button" data-tab="projects">View My Projects</button>
+            <button class="home-cta secondary" type="button" data-tab="contacts">Contact Me</button>
+        </div>
+    </div>
+
+    <div id="projects" class="content">
+        <div id="Dekut" class="project-card">
+            <a href="https://joshuu-cmd.github.io/DEKUT-PORTAL/">
+                <img src="Dekut.png" alt="Dedan Kimathi University Student Portal">
+                <span>Dedan Kimathi University Student Portal</span>
+            </a>
+        </div>
+        <div id="Boutique" class="project-card">
+            <a href="https://joshuu-cmd.github.io/Boutique/">
+                <img src="Boutique.png" alt="Boutique website">
+                <span>A Boutique website with an admin page</span>
+            </a>
+        </div>
+        <div id="saloon" class="project-card">
+            <a href="https://joshuu-cmd.github.io/Ann-web/">
+                <img src="saloon.png" alt="Saloon website">
+                <span>A Saloon website</span>
+            </a>
+        </div>
+    </div>
+
+    <div id="contacts" class="content">
+        <h2>Contact Information</h2>
+        <p>Feel free to reach out or connect with me on social media.</p>
+        <div class="contact-links">
+            <a href="https://wa.me/254740246377"><img style="width: 30px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbaTscEzlsjkakxzrRWCadUBgqCEFaym7iqFSsWeTLZw&s"></a>
+            <a href="https://www.instagram.com/_jj_"><img style="width: 30px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1l9wTrM5022LnU57YwQDFEYD2l5ci44Cc_s9fZqYt0w&s=10"></a>
+            <a href="mailto:joshuangoso8@gmail.com"><img style="width: 30px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK1C4SXpyTvDimfKZAkTZZAy-QD55dIOwe7XgeVRbF8A&s=10"></a>
+            <a href="https://x.com/jNgoso"><img style="width: 30px;" src="data:image/png;base64,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"></a>
+
+    <script>
+        const buttons = document.querySelectorAll('.tab-btn');
+        const sections = document.querySelectorAll('.content');
+
+        function showTab(tabId) {
+            buttons.forEach(btn => btn.classList.toggle('active', btn.dataset.tab === tabId));
+            sections.forEach(section => section.classList.toggle('active', section.id === tabId));
+        }
+
+        buttons.forEach(button => {
+            button.addEventListener('click', function () {
+                showTab(this.dataset.tab);
+            });
+        });
+
+        document.querySelectorAll('.home-cta').forEach(button => {
+            button.addEventListener('click', function () {
+                showTab(this.dataset.tab);
+            });
+        });
+    </script>
+</body>
+</html>
