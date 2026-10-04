@@ -85,6 +85,27 @@
             line-height: 1.7;
         }
 
+        .home-skills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            max-width: 700px;
+            margin: 8px 0 4px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .home-skills li {
+            padding: 8px 14px;
+            border: 1px solid rgba(15, 139, 82, 0.16);
+            border-radius: 999px;
+            background: #fff;
+            color: var(--primary-dark);
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+
         .home-actions {
             display: flex;
             flex-wrap: wrap;
@@ -258,8 +279,17 @@
     <div id="home" class="content active">
         <div class="profile"><img src="home.jpg" alt="profile"></div>
         <h1>Hi, I'm Joshua Malombe</h1>
-        <p class="home-role">Frontend Developer &amp; Cybersecurity Specialist</p>
-        <p>I'm a passionate developer with experience in creating engaging web applications and a cybersecurity specialist.</p>
+        <p class="home-role">Web Developer &amp; Cybersecurity Specialist</p>
+        <p>I'm a passionate developer with experience in creating developing desktop applications, web applications and a cybersecurity specialist.</p>
+        <p>I'm familiar with:</p>
+        <ul class="home-skills" aria-label="Technologies and databases">
+            <li>HTML</li>
+            <li>PHP</li>
+            <li>JavaScript</li>
+            <li>Python</li>
+            <li>MySQL</li>
+            <li>PostgreSQL</li>
+        </ul>
         <div class="home-actions">
             <button class="home-cta" type="button" data-tab="projects">View My Projects</button>
             <button class="home-cta secondary" type="button" data-tab="contacts">Contact Me</button>
