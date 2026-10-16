@@ -283,9 +283,81 @@
             border-radius: 8px;
         }
 
+        .call-contact {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            width: min(100%, 440px);
+            margin: 28px auto 0;
+            padding: 20px 24px;
+            text-align: left;
+            color: #fff;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            border-radius: 20px;
+            box-shadow: 0 12px 24px rgba(11, 111, 64, 0.2);
+        }
+
+        .call-contact-icon {
+            display: grid;
+            flex: 0 0 54px;
+            width: 54px;
+            height: 54px;
+            place-items: center;
+            color: var(--primary-dark);
+            background: #fff;
+            border-radius: 16px;
+        }
+
+        .call-contact-icon svg {
+            width: 25px;
+            height: 25px;
+        }
+
+        .call-contact-copy {
+            display: grid;
+            gap: 5px;
+        }
+
+        .call-contact-label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            opacity: 0.82;
+        }
+
+        .call-contact-numbers {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 14px;
+        }
+
+        .call-contact-numbers a {
+            color: #fff;
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .call-contact-numbers a:hover {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .call-contact-numbers a:focus-visible {
+            outline: 2px solid #fff;
+            outline-offset: 4px;
+            border-radius: 2px;
+        }
+
         @media (max-width: 600px) {
             #contacts {
                 padding: 28px 18px;
+            }
+
+            .call-contact {
+                gap: 14px;
+                padding: 18px;
             }
         }
     </style>
@@ -338,6 +410,12 @@
                 <span>A Saloon website</span>
             </a>
         </div>
+        <div id="gaming" class="project-card">
+            <a href="https://gaming-platform-omega.vercel.app/">
+                <img src="gaming.png" alt="gaming website">
+                <span>A Gaming website</span>
+            </a>
+        </div>
     </div>
 
     <div id="contacts" class="content">
@@ -347,7 +425,23 @@
             <a href="https://wa.me/254740246377"><img style="width: 30px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbaTscEzlsjkakxzrRWCadUBgqCEFaym7iqFSsWeTLZw&s"></a>
             <a href="https://www.instagram.com/_jj_"><img style="width: 30px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1l9wTrM5022LnU57YwQDFEYD2l5ci44Cc_s9fZqYt0w&s=10"></a>
             <a href="mailto:joshuangoso8@gmail.com"><img style="width: 30px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK1C4SXpyTvDimfKZAkTZZAy-QD55dIOwe7XgeVRbF8A&s=10"></a>
-            <a href="https://x.com/jNgoso"><img style="width: 30px;" src="data:image/png;base64,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"></a>
+            <a href="https://x.com/jNgoso"><img style="width: 30px;" src="data:image/png;base64,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"></a> 
+        </div>
+        <div class="call-contact" aria-label="Call Joshua">
+            <span class="call-contact-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.2 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.35 1.9.69 2.8a2 2 0 0 1-.45 2.11L8.08 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.84.57 2.8.69A2 2 0 0 1 22 16.92z" />
+                </svg>
+            </span>
+            <div class="call-contact-copy">
+                <span class="call-contact-label">Call me</span>
+                <div class="call-contact-numbers">
+                    <a href="tel:+254740246377">CALL HERE</a> or
+                    <a href="tel:+254758422224">HERE</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
         const buttons = document.querySelectorAll('.tab-btn');
